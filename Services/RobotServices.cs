@@ -11,16 +11,14 @@ namespace practice_robots_bootstrap.Services
     {
     public static List<RobotModel> Builder()
         {
-            JsonSerializer serializer = new JsonSerializer();
-            var RobotList = new List<RobotModel>();
 
             using (var reader = new StreamReader(System.IO.File.Open("robots.json", FileMode.Open)))
             {
-                var robotsInfo = JsonConvert.DeserializeObject<RobotModel>(reader.ReadToEnd());
-                RobotList.Add(robotsInfo);
+                var newBot = JsonConvert.DeserializeObject<List<RobotModel>>(reader.ReadToEnd());
                 
+                return newBot;
             }
-            return RobotList;
+            
         }
     }
 }

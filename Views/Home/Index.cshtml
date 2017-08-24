@@ -2,3 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
+<div class="row">
+    @model List<RobotModel>
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-3">
+            <a href="/Profile?=@item.Id"><h1>@item.Name</h1></a>
+            <img src=@item.Avatar>
+            <h2>@item.Username</h2>
+            @if(@item.Job == null)
+            {
+                <p style="Color:Red">Available for hire</p>
+            }
+            else
+            {
+                <p>@item.Job | @item.Company</p>
+            }
+        </div>
+    }
+</div>
